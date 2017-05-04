@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @projects = @projects.order(:end_date)
+    @project = Project.new
   end
 
   def show
@@ -24,6 +25,12 @@ class ProjectsController < ApplicationController
       render :new
     end
    end
+
+   def search
+    @project = Project.find_by(title:params[:title])
+    redirect_to project_path(@project)
+   end
+
 
   private
   def project_params

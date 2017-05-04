@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :rewards do
     resources :pledges, only: [:create]
   end
+  post '/search' => 'projects#search'
 
   get 'login' => 'user_sessions#new', :as => :login
   delete 'logout' => 'user_sessions#destroy', :as => :logout
