@@ -9,6 +9,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    if request.xhr?
+      render :show
+    end
   end
 
   def new
